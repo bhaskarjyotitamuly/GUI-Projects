@@ -5,7 +5,6 @@
 # Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
-print('burger')
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
