@@ -9,6 +9,26 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sqlite3
 
+#Creating the database called 'bookstore.db'
+# You'll need to have 'sqlite3' installed in your system.If not,go to CMD,& type 'pip install sqlite3'.
+
+conn=sqlite3.connect('bookstore.db')
+MyCursor=conn.cursor()
+MyCursor.execute('''CREATE TABLE Books (
+    Book_ID INTEGER       PRIMARY KEY AUTOINCREMENT,
+    Title   TEXT (60)     NOT NULL,
+    Author  TEXT (50),
+    Sell    [PRICE FLOAT],
+    Rent    PRICE,
+    Copies  INTEGER
+);''')
+MyCursor.execute('''INSERT INTO TABLE VALUES(1,'The Kite Runner','Khaled Hosseini',
+                350,150,6),(2,'The Mystic Eye','Jaggi Vasudev',250.75,100,8),(3,'Meditations',
+                'Marcus Aurelius',750,350,9);''')
+conn.commit()
+conn.close()
+
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -120,7 +140,7 @@ class Ui_Form(object):
         MyObject=sqlite3.connect('bookstore.db')
         myCurs=MyObject.cursor()
          
-        myCurs.execute("SELECT * FROM Books_1 WHERE Title== '"+title+"';")
+        myCurs.execute("SELECT * FROM Books_2 WHERE Title== '"+title+"';")
         try:
             record=myCurs.fetchone()
             if record!=None:
